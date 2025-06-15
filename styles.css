@@ -1,0 +1,394 @@
+/* CSS Variables for Theme Management */
+:root {
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --bg-calculator: #ffffff;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --accent-primary: #667eea;
+    --accent-secondary: #764ba2;
+    --btn-number: #ffffff;
+    --btn-number-hover: #f7fafc;
+    --btn-operator: #667eea;
+    --btn-operator-hover: #5a67d8;
+    --btn-function: #e2e8f0;
+    --btn-function-hover: #cbd5e0;
+    --btn-equals: #48bb78;
+    --btn-equals-hover: #38a169;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --border-color: #e2e8f0;
+    --display-bg: #f7fafc;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-calculator: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --accent-primary: #667eea;
+    --accent-secondary: #764ba2;
+    --btn-number: #4a5568;
+    --btn-number-hover: #2d3748;
+    --btn-operator: #667eea;
+    --btn-operator-hover: #5a67d8;
+    --btn-function: #2d3748;
+    --btn-function-hover: #1a202c;
+    --btn-equals: #48bb78;
+    --btn-equals-hover: #38a169;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+    --border-color: #4a5568;
+    --display-bg: #1a202c;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+/* Calculator Container */
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Calculator Main Body */
+.calculator {
+    background: var(--bg-calculator);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 
+        0 20px 40px var(--shadow-medium),
+        0 0 0 1px var(--border-color);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+}
+
+.theme-btn {
+    background: var(--btn-function);
+    border: none;
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.theme-btn:hover {
+    background: var(--btn-function-hover);
+    transform: scale(1.05);
+}
+
+.theme-btn:active {
+    transform: scale(0.95);
+}
+
+/* Display Screen */
+.display {
+    background: var(--display-bg);
+    border-radius: 16px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    margin-top: 16px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.display-input {
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+    min-height: 30px;
+}
+
+.display-result {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+    width: 100%;
+    min-height: 40px;
+    transition: all 0.3s ease;
+}
+
+/* Button Grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* Button Base Styles */
+.btn {
+    border: none;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    height: 64px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-medium);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+/* Button Ripple Effect */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.3s, height 0.3s, top 0.3s, left 0.3s;
+    transform: translate(-50%, -50%);
+}
+
+.btn:active::before {
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+}
+
+/* Number Buttons */
+.btn-number {
+    background: var(--btn-number);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-number:hover {
+    background: var(--btn-number-hover);
+}
+
+/* Operator Buttons */
+.btn-operator {
+    background: var(--btn-operator);
+    color: white;
+}
+
+.btn-operator:hover {
+    background: var(--btn-operator-hover);
+}
+
+/* Function Buttons */
+.btn-function {
+    background: var(--btn-function);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-function:hover {
+    background: var(--btn-function-hover);
+}
+
+/* Equals Button */
+.btn-equals {
+    background: var(--btn-equals);
+    color: white;
+}
+
+.btn-equals:hover {
+    background: var(--btn-equals-hover);
+}
+
+/* Special Button Sizes */
+.btn[data-number="0"] {
+    grid-column: span 1;
+}
+
+/* Keyboard Info */
+.keyboard-info {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 12px 16px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    max-width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Error State */
+.display.error .display-result {
+    color: #e53e3e;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Loading Animation */
+.calculating {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .calculator {
+        padding: 20px;
+        border-radius: 20px;
+    }
+    
+    .display {
+        padding: 20px 16px;
+        margin-bottom: 20px;
+    }
+    
+    .display-input {
+        font-size: 20px;
+    }
+    
+    .display-result {
+        font-size: 32px;
+    }
+    
+    .btn {
+        height: 56px;
+        font-size: 18px;
+        border-radius: 14px;
+    }
+    
+    .buttons {
+        gap: 10px;
+    }
+    
+    .theme-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+    
+    .keyboard-info {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .calculator {
+        padding: 16px;
+    }
+    
+    .display {
+        padding: 16px 12px;
+    }
+    
+    .display-input {
+        font-size: 18px;
+    }
+    
+    .display-result {
+        font-size: 28px;
+    }
+    
+    .btn {
+        height: 52px;
+        font-size: 16px;
+    }
+    
+    .buttons {
+        gap: 8px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .calculator {
+        box-shadow: 
+            0 20px 40px var(--shadow-medium),
+            0 0 0 0.5px var(--border-color);
+    }
+}
+
+/* Focus Styles for Accessibility */
+.btn:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+.theme-btn:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Smooth Theme Transition */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

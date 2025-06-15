@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <!-- Theme Toggle -->
+            <div class="theme-toggle">
+                <button id="theme-btn" class="theme-btn" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+            
+            <!-- Display Screen -->
+            <div class="display">
+                <div class="display-input" id="display-input">0</div>
+                <div class="display-result" id="display-result"></div>
+            </div>
+            
+            <!-- Button Grid -->
+            <div class="buttons">
+                <!-- Row 1: Advanced Functions -->
+                <button class="btn btn-function" data-action="clear">C</button>
+                <button class="btn btn-function" data-action="clear-entry">CE</button>
+                <button class="btn btn-function" data-action="percentage">%</button>
+                <button class="btn btn-operator" data-action="divide">÷</button>
+                
+                <!-- Row 2: Numbers and Operations -->
+                <button class="btn btn-number" data-number="7">7</button>
+                <button class="btn btn-number" data-number="8">8</button>
+                <button class="btn btn-number" data-number="9">9</button>
+                <button class="btn btn-operator" data-action="multiply">×</button>
+                
+                <!-- Row 3: Numbers and Operations -->
+                <button class="btn btn-number" data-number="4">4</button>
+                <button class="btn btn-number" data-number="5">5</button>
+                <button class="btn btn-number" data-number="6">6</button>
+                <button class="btn btn-operator" data-action="subtract">−</button>
+                
+                <!-- Row 4: Numbers and Operations -->
+                <button class="btn btn-number" data-number="1">1</button>
+                <button class="btn btn-number" data-number="2">2</button>
+                <button class="btn btn-number" data-number="3">3</button>
+                <button class="btn btn-operator" data-action="add">+</button>
+                
+                <!-- Row 5: Special Functions and Zero -->
+                <button class="btn btn-function" data-action="square-root">√</button>
+                <button class="btn btn-number" data-number="0">0</button>
+                <button class="btn btn-function" data-action="decimal">.</button>
+                <button class="btn btn-equals" data-action="equals">=</button>
+                
+                <!-- Row 6: Advanced Operations -->
+                <button class="btn btn-function" data-action="power">x²</button>
+                <button class="btn btn-function" data-action="open-paren">(</button>
+                <button class="btn btn-function" data-action="close-paren">)</button>
+                <button class="btn btn-function" data-action="parentheses">()</button>
+            </div>
+        </div>
+        
+        <!-- Keyboard Instructions -->
+        <div class="keyboard-info">
+            <p>💡 Keyboard shortcuts: Numbers (0-9), Operators (+, -, *, /), Enter (=), Escape (C), Backspace (CE)</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
